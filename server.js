@@ -78,4 +78,15 @@ app.get("/all", function (req, res) {
     })
 })
 
-
+app.get("/title", function(req, res) {
+    db.scrapedData.find().sort({ title:1 }, function(error, found){
+        if (error) {
+            console.log(error)
+        } else {
+            res.send(found)
+        }
+    })
+})
+app.listen(PORT, function (){
+    console.log("App running on port 3000!")
+})
